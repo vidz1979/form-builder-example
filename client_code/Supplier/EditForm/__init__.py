@@ -16,15 +16,16 @@ from ...utils.form_builder import form_builder
 class EditForm(EditFormTemplate):
     def __init__(self, **properties):
         self.changed = False
-        self.item = {'data': {}}
         if self.url_dict["id"]:
-            self.item = anvil.server.call('get_suppliers').get_by_id(self.url_dict["id"])
+            self.item = app_tables.suppliers.get_by_id(self.url_dict["id"])
             if not self.item:
                 Notification(f"Supplier not found!", style="danger")
                 routing.set_url_hash(
                     "suppliers", replace_current_url=True, load_from_cache=False
                 )
                 return
+        else: 
+            self.item = app_tables.suppliers.add_row(name="", document="")
         self.init_components(**properties)
 
         # build form and store output fields in self.inputs
@@ -88,7 +89,7 @@ class EditForm(EditFormTemplate):
         result = schema.safe_parse(sender.value)
 
         # set item value with cleaned data
-        self.item.set_value(sender.key, result.data)
+        self.item[sender.key] = result.data
 
         # remember validation errors to prevent saving
         if result.error:

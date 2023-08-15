@@ -12,7 +12,7 @@ components:
   layout_properties:
     col_widths: {}
     grid_position: KJXSLR,DGPTOT
-  event_bindings: {click: btn_add_fornecedor_click}
+  event_bindings: {click: btn_add_supplier_click}
 - type: RepeatingPanel
   properties: {item_template: Supplier.ListForm.ItemTemplate1}
   name: repeating_panel_1

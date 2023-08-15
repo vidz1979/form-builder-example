@@ -17,3 +17,4 @@ class ListForm(ListFormTemplate):
     def btn_add_supplier_click(self, **event_args):
         routing.set_url_hash("supplier?id=", load_from_cache=False)
         routing.remove_from_cache("supplier?id=")
+
