@@ -7,16 +7,16 @@ components:
     foreground: '', visible: true, font_size: null, content: '# Form Builder Example
 
 
-      This app shows a way to automate CRUD', font: '', spacing_above: small, spacing_below: small,
-    data: null, background: '', format: markdown}
+      This app shows a way to automate form generation.', font: '', spacing_above: small,
+    spacing_below: small, data: null, background: '', format: markdown}
   name: rich_text_1
   layout_properties: {grid_position: 'FDZNBY,HKLPZW'}
 - type: Button
   properties: {role: filled-button, align: center, tooltip: '', border: '', enabled: true,
-    foreground: '', visible: true, text: Fornecedores, font_size: null, font: '',
-    spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '',
-    bold: false, underline: false, icon: ''}
-  name: btn_fornecedor
+    foreground: '', visible: true, text: Suppliers, font_size: null, font: '', spacing_above: small,
+    icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: btn_supplier
   layout_properties:
     col_widths: {}
     grid_position: ZTNNFN,CANIWS

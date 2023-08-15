@@ -5,16 +5,16 @@ container:
 components:
 - type: Button
   properties: {role: primary-color, align: left, tooltip: '', border: '', enabled: true,
-    foreground: '', visible: true, text: Adicionar fornecedor, font_size: null, font: '',
+    foreground: '', visible: true, text: Add supplier, font_size: null, font: '',
     spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '',
     bold: false, underline: false, icon: 'fa:plus'}
-  name: btn_add_fornecedor
+  name: btn_add_supplier
   layout_properties:
     col_widths: {}
     grid_position: KJXSLR,DGPTOT
   event_bindings: {click: btn_add_fornecedor_click}
 - type: RepeatingPanel
-  properties: {item_template: Fornecedor.ListForm.ItemTemplate1}
+  properties: {item_template: Supplier.ListForm.ItemTemplate1}
   name: repeating_panel_1
   layout_properties: {grid_position: 'KRDFDT,QZTNPE'}
   data_bindings: []

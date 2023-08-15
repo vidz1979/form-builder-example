@@ -1,13 +1,16 @@
 from ._anvil_designer import MainFormTemplate
 from anvil import *
+import anvil.tables as tables
+import anvil.tables.query as q
+from anvil.tables import app_tables
 import anvil.server
 from anvil_extras import routing
 from anvil_extras import routing
 
 from ..HomeForm import HomeForm
 from ..ErrorForm import ErrorForm
-from ..Fornecedor.ListForm import ListForm as FornecedorListForm
-from ..Fornecedor.EditForm import EditForm as FornecedorEditForm
+from ..Supplier.ListForm import ListForm as SupplierListForm
+from ..Supplier.EditForm import EditForm as SupplierEditForm
 
 @routing.main_router
 class MainForm(MainFormTemplate):

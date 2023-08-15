@@ -5,8 +5,8 @@ dependencies:
   resolution_hints: {app_id: C6ZZPAPN4YYF5NVJ, name: Anvil Extras, package_name: anvil_extras}
 services:
 - source: /runtime/services/tables.yml
-  client_config: {}
-  server_config: {}
+  client_config: {enable_v2: true}
+  server_config: {auto_create_missing_columns: true}
 startup: {type: form, module: MainForm}
 package_name: Form_Builder_Example
 allow_embedding: false
@@ -16,5 +16,14 @@ startup_form: null
 native_deps: {head_html: '<script src="https://unpkg.com/imask"></script>
 
     '}
+db_schema:
+  suppliers:
+    client: full
+    server: full
+    columns:
+    - name: name
+      admin_ui: {order: 1, width: 200}
+      type: string
+    title: Suppliers
 uplink_visible: true
 renamed: true

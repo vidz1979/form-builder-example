@@ -19,7 +19,7 @@ components:
     event_bindings: {click: btn_back_click}
   - type: Label
     properties: {role: headline, align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Editar fornecedor, font_size: null, font: '', spacing_above: small,
+      visible: true, text: Edit supplier, font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: ''}
     name: title_label

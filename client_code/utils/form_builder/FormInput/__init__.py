@@ -1,5 +1,8 @@
 from ._anvil_designer import FormInputTemplate
 from anvil import *
+import anvil.tables as tables
+import anvil.tables.query as q
+from anvil.tables import app_tables
 from anvil.js.window import IMask
 import anvil.server
 from anvil_extras.ChipsInput import ChipsInput

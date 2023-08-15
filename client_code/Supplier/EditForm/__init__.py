@@ -1,5 +1,8 @@
 from ._anvil_designer import EditFormTemplate
 from anvil import *
+import anvil.tables as tables
+import anvil.tables.query as q
+from anvil.tables import app_tables
 import anvil.server
 from anvil_extras import routing
 from ...utils.nested_dict import NestedDict
@@ -8,31 +11,26 @@ from ..form_configs import form_configs
 from ...utils.form_builder import form_builder
 
 @routing.route(
-    "fornecedor", url_keys=["id", routing.ANY], title="Fornecedor | Compras MV"
+    "supplier", url_keys=["id", routing.ANY], title="Supplier"
 )
 class EditForm(EditFormTemplate):
     def __init__(self, **properties):
         self.changed = False
-        self.item = {}
+        self.item = {'data': {}}
         if self.url_dict["id"]:
-            self.item = anvil.server.call(
-                "get_fornecedores",
-                params={"filter": {"_id": self.url_dict["id"]}},
-                one=True,
-            )
+            self.item = anvil.server.call('get_suppliers').get_by_id(self.url_dict["id"])
             if not self.item:
-                Notification(f"Fornecedor não encontrado!", style="danger")
+                Notification(f"Supplier not found!", style="danger")
                 routing.set_url_hash(
-                    "fornecedores", replace_current_url=True, load_from_cache=False
+                    "suppliers", replace_current_url=True, load_from_cache=False
                 )
                 return
-        self.item = NestedDict(self.item)
         self.init_components(**properties)
 
         # build form and store output fields in self.inputs
         self.inputs = form_builder(
             container=self.fields_panel,
-            form_config=form_configs['fornecedor'],
+            form_config=form_configs['supplier'],
             validate_event=self.validate_field,
             initial_data=self.item,
         )
@@ -41,19 +39,19 @@ class EditForm(EditFormTemplate):
     def before_unload(self):
         if self.changed:
             r = confirm(
-                "Gostaria de salvar as mudanças?",
-                buttons=[("Sim", "S"), ("Não", "N"), ("Cancelar", "C")],
+                "Would you like to save changes?",
+                buttons=[("Yes", "Y"), ("No", "N"), ("Cancel", "C")],
             )
             if r == "C":
                 # stop unload
                 return True
-            if r == "S":
+            if r == "Y":
                 self.save_button_click()
             if r == "N":
                 self.btn_back_click()
                 
     def btn_back_click(self, **event_args):
-        url = "fornecedores"
+        url = "suppliers"
         routing.set_url_hash(url, load_from_cache=False)
 
     def save_button_click(self, **event_args):
@@ -64,13 +62,16 @@ class EditForm(EditFormTemplate):
         if error_count > 0:
             print(self.validation_errors)
             Notification(
-                "Existem erros de validação. Corrija-os antes de gravar!",
-                title="Erros de validação",
+                "There are validation errors. Please correct it before saving.",
+                title="Validation errors",
                 style="warning",
             ).show()
             return
 
-        anvil.server.call("upsert_fornecedores", data=self.item)
+        if self.url_dict["id"]:
+            pass
+            # app_tables.suppliers.client_writable(data=)
+        anvil.server.call("upsert_supplieres", data=self.item)
         self.changed = False
         self.btn_back_click()
 
@@ -79,7 +80,7 @@ class EditForm(EditFormTemplate):
 
         # handle nested schemas like in "section.title"
         key_path = sender.key.split(".")
-        schema = schemas['fornecedor']
+        schema = schemas['supplier']
         for k in key_path:
             schema = schema.shape[k]
 
