@@ -2,6 +2,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
+
 class NestedDict(dict):
     def set_value(self, path: str, value: any):
         path_keys = path.split(".")

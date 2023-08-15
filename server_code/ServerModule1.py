@@ -17,7 +17,7 @@ def upsert_supplier(item, id):
             raise Exception(f"Supplier not found! ID {id}")
         row.update(**item)
     else:
-        row = app_tables.suppliers.add_row(**data)
+        row = app_tables.suppliers.add_row(**item)
     return row
         
       

@@ -15,30 +15,24 @@ form_configs["contact"] = [
 ]
 
 form_configs["supplier"] = [
-    {
-        "type": "section",
-        "label": "Supplier",
-        "content": [
-            [
-                {"key": "name", "type": "text", "label": "Name"},
-                {"key": "document", "type": "text", "label": "Document", "mask": "00.000.000/0000-00"},
-            ],
-            [
-                {"key": "brands", "type": "text_list", "label": "Brands"},
-                {"key": "tags", "type": "text_list", "label": "Tags"},
-            ],
-            [
-                {
-                    "key": "areas",
-                    "type": "multi_select",
-                    "label": "Areas",
-                    "options": enums["areas"],
-                    "tooltip": "Which areas this supplier operates in",
-                },
-                {"key": "notes", "type": "text_area", "label": "Observações"},
-            ],
-        ],
-    },
+    [
+        {"key": "name", "type": "text", "label": "Name"},
+        {"key": "document", "type": "text", "label": "Document", "mask": "00.000.000/0000-00"},
+    ],
+    [
+        {"key": "brands", "type": "text_list", "label": "Brands"},
+        {"key": "tags", "type": "text_list", "label": "Tags"},
+    ],
+    [
+        {
+            "key": "areas",
+            "type": "multi_select",
+            "label": "Areas",
+            "options": enums["areas"],
+            "tooltip": "Which areas this supplier operates in",
+        },
+        {"key": "notes", "type": "text_area", "label": "Observações"},
+    ],
     {
         "type": "section",
         "label": "Contacts",

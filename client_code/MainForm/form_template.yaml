@@ -19,16 +19,16 @@ components:
   components:
   - type: Link
     properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Fornecedores, font_size: null, wrap_on: mobile, font: '',
+      visible: true, text: Suppliers, font_size: null, wrap_on: mobile, font: '',
       col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '',
       spacing_below: small, italic: false, background: '', bold: false, underline: false,
       icon: 'fa:list-alt'}
-    name: link_fornecedores
+    name: link_suppliers
     layout_properties: {grid_position: 'LOXVNI,ZXYMFD'}
     event_bindings: {click: nav_link_click}
   - type: Button
     properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: Atualizar, font_size: null, font: '', spacing_above: small,
+      foreground: '', visible: true, text: Refresh, font_size: null, font: '', spacing_above: small,
       icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
       underline: false, icon: 'fa:refresh'}
     name: btn_refresh

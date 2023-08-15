@@ -17,9 +17,9 @@ class MainForm(MainFormTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
-        self.links = [self.link_fornecedores]
+        self.links = [self.link_suppliers]
         self.link_home.tag.url_hash = "home"
-        self.link_fornecedores.tag.url_hash = "fornecedores"
+        self.link_suppliers.tag.url_hash = "suppliers"
 
     def nav_link_click(self, **event_args):
         url_hash = event_args["sender"].tag.url_hash

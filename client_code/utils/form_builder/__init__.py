@@ -3,12 +3,12 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-from ..nested_dict import NestedDict
+# from ..nested_dict import NestedDict
 from .FormInput import FormInput
 
 def form_builder(container, form_config, validate_event, initial_data = {}):
     output_fields = []
-    initial_data = NestedDict(initial_data)
+    # initial_data = NestedDict(initial_data)
     for entry in form_config:
         if type(entry) == dict:
             if entry["type"] == "section":
@@ -24,7 +24,7 @@ def form_builder(container, form_config, validate_event, initial_data = {}):
             else:
                 input = FormInput(**entry)
                 input.add_event_handler("validate", validate_event)
-                input.value = initial_data.get_value(entry['key'])
+                input.value = initial_data.get(entry['key'], None)
                 output_fields.append(input)
                 container.add_component(input, expand=True)
         elif type(entry) == list:            

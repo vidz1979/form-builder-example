@@ -54,12 +54,23 @@ db_schema:
     - name: notes
       admin_ui: {}
       type: string
-    - name: other_info.production_time
-      admin_ui: {}
-      type: unresolved
     - name: tags
       admin_ui: {}
       type: simpleObject
+    - {name: contact_1.notes, admin_ui: null, type: string}
+    - {name: contact_2.email, admin_ui: null, type: string}
+    - {name: contact_2.notes, admin_ui: null, type: string}
+    - {name: contact_2.phone, admin_ui: null, type: string}
+    - {name: contact_3.email, admin_ui: null, type: string}
+    - {name: contact_3.name, admin_ui: null, type: string}
+    - {name: contact_3.notes, admin_ui: null, type: string}
+    - {name: contact_3.phone, admin_ui: null, type: string}
+    - {name: other_info.default_margin, admin_ui: null, type: number}
+    - {name: other_info.delivery_time, admin_ui: null, type: number}
+    - name: other_info.production_time
+      admin_ui: {}
+      type: number
+    - {name: other_info.uses_ean, admin_ui: null, type: bool}
     title: Suppliers
 uplink_visible: true
 renamed: true

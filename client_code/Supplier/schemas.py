@@ -4,7 +4,7 @@ from anvil.tables import app_tables
 import anvil.server
 from anvil_extras import zod as z
 from datetime import date, timedelta
-from ..utils import validateCnpj, to_upper
+from ..utils import to_upper
 
 enums = {}
 enums['areas'] = ["CLOTHES", "SHOES", "APPARELS"]
@@ -22,7 +22,7 @@ schemas['supplier'] = z.typed_dict(
         "_id": z.string().min(24).max(24).optional(),
         "name": (z.string().min(3, message="Mandatory information").strip().transform(to_upper)),
         "document": z.string().min(18).max(18),
-            # .refine(validateCnpj, message="Invalid document"),
+            # .refine(myValidationFunction, message="Invalid document"),
         "tags": z.list(z.string()).optional(),
         "brands": z.list(z.string()).min(1, message="Fill at least one brand"),
         "areas": z.list(z.enum(enums['areas'], invalid_type_error="Invalid option")),
