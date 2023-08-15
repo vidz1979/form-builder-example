@@ -1,0 +1,13 @@
+container: {type: ColumnPanel}
+components:
+- type: Button
+  properties: {role: filled-button, align: center, tooltip: '', border: '', enabled: true,
+    foreground: '', visible: true, text: Fornecedores, font_size: null, font: '',
+    spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '',
+    bold: false, underline: false, icon: ''}
+  name: btn_fornecedor
+  layout_properties:
+    col_widths: {}
+    grid_position: ZTNNFN,CANIWS
+  event_bindings: {click: nav_button_click}
+is_package: true

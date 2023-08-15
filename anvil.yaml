@@ -1,0 +1,21 @@
+correct_dependency_ids: {dep_hx0f2ricv2qsv: C6ZZPAPN4YYF5NVJ}
+dependencies:
+- dep_id: dep_hx0f2ricv2qsv
+  version: {dev: false}
+  resolution_hints: {app_id: C6ZZPAPN4YYF5NVJ, name: Anvil Extras, package_name: anvil_extras}
+  app_id: null
+services:
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {}
+startup: {type: form, module: MainForm}
+package_name: Compras_MV___M3
+allow_embedding: false
+name: Clone of Compras MV - M3
+runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
+startup_form: null
+native_deps: {head_html: '<script src="https://unpkg.com/imask"></script>
+
+    '}
+uplink_visible: true
+renamed: true

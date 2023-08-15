@@ -1,0 +1,16 @@
+container:
+  type: ColumnPanel
+  data_bindings:
+  - {property: tag, code: 'self.item[''razao_social'']'}
+components:
+- type: Link
+  properties: {col_widths: '{}'}
+  name: title_link
+  layout_properties:
+    col_widths: {}
+    grid_position: NWSUKP,NYOUAU
+  components: []
+  data_bindings:
+  - {property: text, code: 'self.item[''razao_social'']'}
+  event_bindings: {click: title_link_click}
+is_package: true
