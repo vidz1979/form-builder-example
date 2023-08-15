@@ -16,8 +16,10 @@ from ...utils.form_builder import form_builder
 class EditForm(EditFormTemplate):
     def __init__(self, **properties):
         self.changed = False
-        if self.url_dict["id"]:
-            self.item = app_tables.suppliers.get_by_id(self.url_dict["id"])
+        self.item_id = self.url_dict["id"]
+        if self.item_id:
+            self.item = dict(anvil.server.call('get_client_suppliers').get_by_id(self.item_id))
+            print(self.item)
             if not self.item:
                 Notification(f"Supplier not found!", style="danger")
                 routing.set_url_hash(
@@ -25,7 +27,7 @@ class EditForm(EditFormTemplate):
                 )
                 return
         else: 
-            self.item = app_tables.suppliers.add_row(name="", document="")
+            self.item = {}
         self.init_components(**properties)
 
         # build form and store output fields in self.inputs
@@ -37,45 +39,7 @@ class EditForm(EditFormTemplate):
         )
         self.validation_errors = {}
 
-    def before_unload(self):
-        if self.changed:
-            r = confirm(
-                "Would you like to save changes?",
-                buttons=[("Yes", "Y"), ("No", "N"), ("Cancel", "C")],
-            )
-            if r == "C":
-                # stop unload
-                return True
-            if r == "Y":
-                self.save_button_click()
-            if r == "N":
-                self.btn_back_click()
-                
-    def btn_back_click(self, **event_args):
-        url = "suppliers"
-        routing.set_url_hash(url, load_from_cache=False)
-
-    def save_button_click(self, **event_args):
-        for input in self.inputs:
-            self.validate_field(sender=input)
-
-        error_count = len(self.validation_errors.keys())
-        if error_count > 0:
-            print(self.validation_errors)
-            Notification(
-                "There are validation errors. Please correct it before saving.",
-                title="Validation errors",
-                style="warning",
-            ).show()
-            return
-
-        if self.url_dict["id"]:
-            pass
-            # app_tables.suppliers.client_writable(data=)
-        anvil.server.call("upsert_supplieres", data=self.item)
-        self.changed = False
-        self.btn_back_click()
-
+    
     def validate_field(self, **event_args):
         sender = event_args["sender"]
 
@@ -89,6 +53,7 @@ class EditForm(EditFormTemplate):
         result = schema.safe_parse(sender.value)
 
         # set item value with cleaned data
+        self.item = dict(self.item)
         self.item[sender.key] = result.data
 
         # remember validation errors to prevent saving
@@ -103,3 +68,41 @@ class EditForm(EditFormTemplate):
 
         self.changed = True
 
+    
+    def save_button_click(self, **event_args):
+        for input in self.inputs:
+            self.validate_field(sender=input)
+
+        error_count = len(self.validation_errors.keys())
+        if error_count > 0:
+            print(self.validation_errors)
+            Notification(
+                "There are validation errors. Please correct it before saving.",
+                title="Validation errors",
+                style="warning",
+            ).show()
+            return
+
+        anvil.server.call('upsert_supplier', item=self.item, id=self.item_id)
+        self.changed = False
+        self.btn_back_click()
+
+
+    def btn_back_click(self, **event_args):
+        url = "suppliers"
+        routing.set_url_hash(url, load_from_cache=False)
+
+    
+    def before_unload(self):
+        if self.changed:
+            r = confirm(
+                "Would you like to save changes?",
+                buttons=[("Yes", "Y"), ("No", "N"), ("Cancel", "C")],
+            )
+            if r == "C":
+                # stop unload
+                return True
+            if r == "Y":
+                self.save_button_click()
+            if r == "N":
+                self.btn_back_click()

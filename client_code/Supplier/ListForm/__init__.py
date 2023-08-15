@@ -12,7 +12,7 @@ class ListForm(ListFormTemplate):
         self.init_components(**properties)
 
     def form_show(self, **event_args):
-        self.repeating_panel_1.items = anvil.server.call('get_suppliers').search()
+        self.repeating_panel_1.items = anvil.server.call('get_client_suppliers').search()
 
     def btn_add_supplier_click(self, **event_args):
         routing.set_url_hash("supplier?id=", load_from_cache=False)

@@ -24,6 +24,42 @@ db_schema:
     - name: name
       admin_ui: {order: 1, width: 200}
       type: string
+    - name: areas
+      admin_ui: {}
+      type: simpleObject
+    - name: brands
+      admin_ui: {}
+      type: simpleObject
+    - name: conditions.discount
+      admin_ui: {}
+      type: number
+    - name: conditions.due_days
+      admin_ui: {}
+      type: simpleObject
+    - name: contact_1.email
+      admin_ui: {}
+      type: string
+    - name: contact_1.name
+      admin_ui: {}
+      type: string
+    - name: contact_1.phone
+      admin_ui: {}
+      type: string
+    - name: contact_2.name
+      admin_ui: {}
+      type: string
+    - name: document
+      admin_ui: {}
+      type: string
+    - name: notes
+      admin_ui: {}
+      type: string
+    - name: other_info.production_time
+      admin_ui: {}
+      type: unresolved
+    - name: tags
+      admin_ui: {}
+      type: simpleObject
     title: Suppliers
 uplink_visible: true
 renamed: true
