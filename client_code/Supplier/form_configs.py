@@ -31,7 +31,7 @@ form_configs["supplier"] = [
             "options": enums["areas"],
             "tooltip": "Which areas this supplier operates in",
         },
-        {"key": "notes", "type": "text_area", "label": "Observações"},
+        {"key": "notes", "type": "text_area", "label": "Notes"},
     ],
     {
         "type": "section",
@@ -50,7 +50,7 @@ form_configs["supplier"] = [
                 {
                     "key": "conditions.due_days",
                     "type": "text_list",
-                    "label": "Prazo de pagamento",
+                    "label": "Due days",
                 },
                 {
                     "key": "conditions.discount",

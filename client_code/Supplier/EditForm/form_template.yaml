@@ -35,7 +35,7 @@ components:
     grid_position: VVPZLN,DOGOFV
 - type: Button
   properties: {role: filled-button, align: right, tooltip: '', border: '', enabled: true,
-    foreground: '', visible: true, text: Gravar, font_size: null, font: '', spacing_above: small,
+    foreground: '', visible: true, text: Save, font_size: null, font: '', spacing_above: small,
     icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
     underline: false, icon: 'fa:floppy-o'}
   name: save_button
