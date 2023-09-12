@@ -1,7 +1,7 @@
 correct_dependency_ids: {dep_hx0f2ricv2qsv: C6ZZPAPN4YYF5NVJ}
 dependencies:
 - dep_id: dep_flpjfh5yfqrsf
-  version: {dev: false}
+  version: {version_tag: v2.4.0}
   resolution_hints: {app_id: C6ZZPAPN4YYF5NVJ, name: Anvil Extras, package_name: anvil_extras}
 services:
 - source: /runtime/services/tables.yml
